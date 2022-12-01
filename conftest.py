@@ -30,7 +30,7 @@ def get_playwright():
 
 @fixture()
 def app(get_playwright):
-    app = BaseClass(get_playwright, base_url="https://www.saucedemo.com")
-    app.goto()
+    app = BaseClass()
+    # app.goto()
     yield app
     app.close()

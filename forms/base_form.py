@@ -1,3 +1,7 @@
-class BasePage:
-    def __init__(self, page):
-        self.page = page
+# from forms.play import Play
+
+
+# class BasePage(Play):
+#     pass
+    # def __init__(self, search):
+    #     self.search = search

@@ -1,28 +1,37 @@
-from playwright.sync_api import Playwright, Locator, Page
+from playwright.sync_api import Playwright, Locator, Page, sync_playwright, BrowserContext
 
 
 class BaseClass:
-    def __init__(self, playwright: Playwright, base_url: str):
-        self.browser = playwright.chromium.launch(headless=False)
+    def __init__(self) -> None:
+        self.playwright = Playwright
+        self.browser = None
+        self.context = BrowserContext
+        self.page = Page
+        self.headless = False
+
+    def start(self):
+        playwright = sync_playwright().start()
+        self.browser = playwright.chromium.launch(headless=self.headless)
         self.context = self.browser.new_context()
         self.page = self.context.new_page()
-        self.base_url = base_url
 
     def close(self):
-        self.context.close()
+        # self.context.close()
         self.browser.close()
 
-    def goto(self):
-        self.page.goto(self.base_url)
+    def goto(self, url):
+        goto = self.page.goto(url)
 
     def search(self, selector: str) -> Locator:
-        result = self.page.locator(selector)
+        result = self.page.locator(self.page, selector)
         return result
 
 
 
-
-
+    # def __init__(self):
+    #     self.browser = Chromium.launch(headless=False)
+    #     self.context = self.browser.new_context()
+    #     self.page = self.context.new_page()
 
 
 

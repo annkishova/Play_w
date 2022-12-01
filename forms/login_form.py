@@ -3,9 +3,9 @@ from forms.play import BaseClass
 
 
 class LoginForm(BaseClass):
-    def __init__(self, playwright: Playwright, base_url: str, page: Page):
-        super().__init__(playwright, base_url)
-        self.page = page
+    # def __init__(self, playwright: Playwright, base_url: str, page: Page):
+    #     super().__init__(playwright, base_url)
+    #     self.page = page
 
     def fill_login_and_enter(self, username="standard_user", password="secret_sauce"):
         username_f = self.search('[id="user-name"]')

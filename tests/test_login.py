@@ -6,9 +6,8 @@ from utils.constants import Url
 from playwright.async_api import Page, expect
 
 
-def test_authorization_succesfull_authorization(app):
-    # page.goto(Url.login_url)
+def test_authorization_succesfull_authorization():
     login_form = LoginForm()
     login_form.fill_login_and_enter()
     #current_url = page.url
-    expect(page).to_have_url(Url.main_page_url)
+    expect().to_have_url(Url.main_page_url)
