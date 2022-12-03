@@ -86,7 +86,6 @@ def __call__(cls, *args, **kwargs):
 
 class Browser(metaclass=Singleton):
     def __init__(self):
-        self.driver = None
         self.__driver = None
         self.headless = False
 
